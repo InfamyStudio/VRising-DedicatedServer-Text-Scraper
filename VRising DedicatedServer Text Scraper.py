@@ -1,6 +1,8 @@
 #By InfamyStudio - CortexCode - ~Cortex~
 import os
 
+print("Please Make Sure To Change Your Path To Your Server Folder In The Code - Will Rework this later!")
+
 path = "E:/SteamLibrary/steamapps/common/VRisingDedicatedServer/"
 filelist = []
 
