@@ -24,7 +24,9 @@ while True:
 
     if results == False:
         print("No Results With Search Query!")
-    #ask if they want to search again
+    else:
+        print("Total Files Containing Your Query '" + query + "': " + str(len(filelist)))
+
     again = str(input("Would you like to search again? (y/n): ")).upper()
     if again == "Y":
         print("Restarting Search!")
