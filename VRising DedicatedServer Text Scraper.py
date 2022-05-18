@@ -1,11 +1,9 @@
 #By InfamyStudio - CortexCode - ~Cortex~
 import os
-
-print("Please Make Sure To Change Your Path To Your Server Folder In The Code - Will Rework this later!")
-
 path = "E:/SteamLibrary/steamapps/common/VRisingDedicatedServer/"
-filelist = []
-while True:
+
+def querySystem():
+    filelist = []
     query = str(input("Enter the text you want to search for: "))
 
     for root, dirs, files in os.walk(path):
@@ -24,15 +22,28 @@ while True:
 
     if results == False:
         print("No Results With Search Query!")
+        f.close()
     else:
         print("Total Files Containing Your Query '" + query + "': " + str(len(filelist)))
-
-    again = str(input("Would you like to search again? (y/n): ")).upper()
-    if again == "Y":
-        print("Restarting Search!")
-    if again == "N":
-        print("Exiting Search!")
         f.close()
-        break
+
+def searchAgain():
+    while True:
+        try:
+            again = str(input("Would you like to search again? (y/n): ")).upper()
+            if again == "Y":
+                print("Restarting Search!")
+                querySystem()
+            elif again == "N":
+                print("Exiting Search!")
+                break
+            else:
+                print("Invalid Input!")
+        except ValueError:
+            print("Invalid Input!")
+if __name__ == "__main__":
+    print("Please Make Sure To Change Your Path To Your Server Folder In The Code - Will Rework this later!")
+    querySystem()
+    searchAgain()
 
 
