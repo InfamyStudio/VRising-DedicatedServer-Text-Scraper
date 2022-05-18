@@ -1,8 +1,42 @@
 #By InfamyStudio - CortexCode - ~Cortex~
 import os
-path = "E:/SteamLibrary/steamapps/common/VRisingDedicatedServer/"
+import sys
 
-def querySystem():
+def validatePath(path):
+    if os.path.exists(path):
+        print("Your VRising Path Has Been Validated!")
+    else:
+        print("VRising Path Does Not Exist!")
+        print("Deleting path.txt")
+        os.remove("path.txt")
+        print("Restarting Program!")
+        checkPath()
+
+
+def checkPath():
+    try:
+        f = open("path.txt","r")
+        path = f.read()
+        f.close()
+        validatePath(path)
+        querySystem(path)
+    except FileNotFoundError:
+        while True:
+            print("My Path For Example: E:/SteamLibrary/steamapps/common/VRisingDedicatedServer/")
+            path = input("Please Enter Your Path To VRising Dedicated Server: ")
+            if path == "":
+                print("Invalid Path")
+            else:
+                f = open("path.txt","w")
+                f.write(path)
+                f.close()
+                break
+        validatePath(path)
+        querySystem(path)
+
+
+
+def querySystem(path):
     filelist = []
     query = str(input("Enter the text you want to search for: "))
 
@@ -23,27 +57,30 @@ def querySystem():
     if results == False:
         print("No Results With Search Query!")
         f.close()
+        searchAgain(path)
     else:
         print("Total Files Containing Your Query '" + query + "': " + str(len(filelist)))
         f.close()
+        searchAgain(path)
 
-def searchAgain():
+def searchAgain(path):
     while True:
         try:
             again = str(input("Would you like to search again? (y/n): ")).upper()
             if again == "Y":
                 print("Restarting Search!")
-                querySystem()
+                querySystem(path)
             elif again == "N":
-                print("Exiting Search!")
-                break
+                print("Exiting VRising Text Scraper!")
+                print("Made With Love By InfamyStudio~CortexCode")
+                sys.exit()
             else:
                 print("Invalid Input!")
         except ValueError:
             print("Invalid Input!")
+
 if __name__ == "__main__":
-    print("Please Make Sure To Change Your Path To Your Server Folder In The Code - Will Rework this later!")
-    querySystem()
-    searchAgain()
+    path = checkPath()
+    
 
 
