@@ -8,6 +8,10 @@ Just type in the text you are looking for and let it run!
 - If the path is successfully validated you will be able to start searching
 - Next star this project and share with friends
 
+## Versions:
+- You can see the main source code of the program and run this "VRising DedicatedServer Text Scraper.py"
+- Minified Source cuts out 76 lines of code for the same result - just a lot faster!
+
 ## Features:
 - Verified path setup on program first launch - the program will make sure it is working in the write path every time using smart validations
 - Scan all files within the directory for the text you are looking for
