@@ -1,3 +1,4 @@
+[![CodeQL](https://github.com/InfamyStudio/VRising-DedicatedServer-Text-Scraper/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/InfamyStudio/VRising-DedicatedServer-Text-Scraper/actions/workflows/codeql-analysis.yml)
 # VRising-DedicatedServer-Text-Scraper:
 Just type in the text you are looking for and let it run!
 
