@@ -12,7 +12,6 @@ def validatePath(path):
         print("Restarting Program!")
         checkPath()
 
-
 def checkPath():
     try:
         f = open("path.txt","r")
@@ -34,10 +33,9 @@ def checkPath():
         validatePath(path)
         querySystem(path)
 
-
-
 def querySystem(path):
     filelist = []
+    fileresult = []
     query = str(input("Enter the text you want to search for: "))
 
     for root, dirs, files in os.walk(path):
@@ -52,6 +50,23 @@ def querySystem(path):
         for line in contents:
             if query in line:
                 results = True
+                fileresult.append(name)
+                print("In File: " + name + "\nFull Line String Was Mentioned: " + line + "Line Number: " + str(contents.index(line)))
+            elif query.upper() in line:
+                results = True
+                fileresult.append(name)
+                print("In File: " + name + "\nFull Line String Was Mentioned: " + line + "Line Number: " + str(contents.index(line)))
+            elif query.lower() in line:
+                results = True
+                fileresult.append(name)
+                print("In File: " + name + "\nFull Line String Was Mentioned: " + line + "Line Number: " + str(contents.index(line)))
+            elif query.capitalize() in line:
+                results = True
+                fileresult.append(name)
+                print("In File: " + name + "\nFull Line String Was Mentioned: " + line + "Line Number: " + str(contents.index(line)))
+            elif query.title() in line:
+                results = True
+                fileresult.append(name)
                 print("In File: " + name + "\nFull Line String Was Mentioned: " + line + "Line Number: " + str(contents.index(line)))
 
     if results == False:
@@ -59,7 +74,7 @@ def querySystem(path):
         f.close()
         searchAgain(path)
     else:
-        print("Total Files Containing Your Query '" + query + "': " + str(len(filelist)))
+        print("Total Files Containing Your Query '" + query + "': " + str(len(fileresult)))
         f.close()
         searchAgain(path)
 
