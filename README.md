@@ -9,7 +9,7 @@ Just type in the text you are looking for and let it run!
 - Next star this project and share with friends
 
 ## Features:
-- Path Setup - Setup your own path to the dedicate server game
+- Verified path setup on program first launch - the program will make sure it is working in the write path every time using smart validations
 - Scan all files within the directory for the text you are looking for
 - Smart search on file endings with .txt - .log - .json - .info
 

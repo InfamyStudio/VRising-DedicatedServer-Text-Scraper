@@ -3,8 +3,40 @@ import os
 import sys
 
 def validatePath(path):
+    count = 0
+    print("Running Path Validation...")
     if os.path.exists(path):
-        print("Your VRising Path Has Been Validated!")
+        for root, dirs, files in os.walk(path):
+            for file in files:
+                if file == "start_server_example.bat":
+                    count = count + 1
+                    print("File " + str(count) + "/6 Found!")
+                elif file == "config.vdf":
+                    count = count + 1
+                    print("File " + str(count) + "/6 Found!")
+                elif file == "VRisingServer.exe":
+                    count = count + 1
+                    print("File " + str(count) + "/6 Found!")
+                elif file == "UnityCrashHandler64.exe":
+                    count = count + 1
+                    print("File " + str(count) + "/6 Found!")
+                elif file == "steamclient.dll":
+                    count = count + 1
+                    print("File " + str(count) + "/6 Found!")
+                elif file == "licenses.txt":
+                    count = count + 1
+                    print("File " + str(count) + "/6 Found!")
+        if count == 6:
+            print("All Files Found!")
+            querySystem(path)
+        elif count <= 5 and count >= 3:
+            print("Not All Files Found - Results May Vary!")  
+        else:
+            print("VRising Path Does Not Exist!")
+            print("Deleting path.txt")
+            os.remove("path.txt")
+            print("Restarting Program!")
+            checkPath()
     else:
         print("VRising Path Does Not Exist!")
         print("Deleting path.txt")
